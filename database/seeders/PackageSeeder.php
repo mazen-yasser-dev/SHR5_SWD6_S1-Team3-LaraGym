@@ -26,6 +26,7 @@ class PackageSeeder extends Seeder
             Package::create([
                 'cycle_id' => 2,
                 'amount' => 10 + $i * 2,
+                'name' => 'Package2' . $i,
             ])->services()->attach([1, 2, 3, 4]);
 
             Package::create([

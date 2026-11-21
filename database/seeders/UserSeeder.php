@@ -21,11 +21,20 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'is_admin' => true,
             'password' => bcrypt('password'),
-            'account_number' => fake()->randomDigit(),
-            'avatar' => fake()->imageUrl(50, 50, 'people')
+            'account_number' => '000000000001',
+            'avatar' => 'https://ui-avatars.com/api/?name=Admin'
         ]);
 
-
-        User::factory(24)->create(['is_admin' => false]);
+        for ($i = 2; $i <= 10; $i++) {
+            User::create([
+                'id' => $i,
+                'name' => "Member $i",
+                'email' => "member$i@example.com",
+                'is_admin' => false,
+                'password' => bcrypt('password'),
+                'account_number' => str_pad($i, 12, "0", STR_PAD_LEFT),
+                'avatar' => "https://ui-avatars.com/api/?name=Member+$i"
+            ]);
+        }
     }
 }

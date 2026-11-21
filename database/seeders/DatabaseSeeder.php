@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ActivitySeeder::class);
         $this->call(PackageSeeder::class);
 
+        \App\Models\Branch::truncate();
+        \App\Models\Branch::create(['id' => 1, 'name' => 'Main Branch', 'status' => 'active', 'description' => 'HQ Facility']);
+        \App\Models\Branch::create(['id' => 2, 'name' => 'Downtown Branch', 'status' => 'active', 'description' => 'Downtown Facility']);
+
         Model::reguard();
         DB::statement("SET foreign_key_checks=1");
     }
